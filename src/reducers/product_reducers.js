@@ -18,8 +18,11 @@ export default function (state = INITIAL_STATE, action) {
             let sortDiscount = state.list.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
             return { ...state, list: sortDiscount }
         case FILTER_PRICE:
+            if(state.hasOwnProperty('oldList')) {
+                state.list = state.oldList
+            }
             let filteredData = state.list.filter((e) => e.price.actual >= action.payload.min && e.price.actual <= action.payload.max);
-            return { ...state, list: filteredData }
+            return { ...state, oldList: state.list, list: filteredData }
         case PRODUCT_ADD:
             let addedItem = state.list.find(item => item.id === action.payload)
             let existed_item = state.addedItems.find(item => action.payload === item.id)
