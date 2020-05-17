@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { productSortAction, productsRangeListing } from "../action";
+import { SORT_DESENDING, SORT_ASENDING, SORT_DISCOUNT } from "../constants";
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
 
@@ -72,9 +73,9 @@ class SubHeader extends Component {
                         </div>
                         </div>
                         <ul className="subHeader_list"><span className="subHeader_title">Sort By</span>
-                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_DESENDING")}>Price -- High Low</div></li>
-                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_ASENDING")}>Price -- Low High</div></li>
-                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_DISCOUNT")}>Discount</div></li>
+                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
+                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
+                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
                         </ul>
                     </div>
                 </div>
@@ -92,9 +93,9 @@ class SubHeader extends Component {
                                 {modalFor === "Sort Options" ?
                                     <div className="body_sort">
                                         <ul className="body_list">
-                                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_DESENDING")}>Price -- High Low</div></li>
-                                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_ASENDING")}>Price -- Low High</div></li>
-                                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick("SORT_DISCOUNT")}>Discount</div></li>
+                                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
+                                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
+                                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
                                         </ul>
                                     </div>
                                     :
