@@ -27,9 +27,8 @@ npm install
 ```
 npm run start
 ```
-```
+
 [demo](https://prograk.github.io/)
-```
 
 ## License
 
