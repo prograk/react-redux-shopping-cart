@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
@@ -13,12 +13,12 @@ import store from "./store";
 
 ReactDOM.render(
     <Provider store={store(rootReducers)}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
             <div>
                 <Route exact path="/" component={App} />
                 <Route exact path="/cart" component={Cart} />
             </div>
-        </BrowserRouter>
+        </HashRouter>
         <Footer />
     </Provider>,
     document.getElementById("root"));
