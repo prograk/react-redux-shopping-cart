@@ -3,11 +3,9 @@ import React from "react";
 import SubHeader from "./subheader";
 import ShoppingList from "./shoppinglist";
 import Filter from "./filter";
-import Header from "./header";
 
 const App = () => (
     <>
-        <Header />
         <div className="container-fluid">
             <div className="product_container container_common">
                 <div className="row">
