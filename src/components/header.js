@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 import Search from "./search";
 import CartIcon from "./carticon";
-// import history from "../history";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
-
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    // handleNavigate = e => {
-    //     e.preventDefault();
-    //     history.push('/');
-    // }
-
     render() {
         return (
             <header className="header">

@@ -7,13 +7,6 @@ import "react-input-range/lib/css/index.css";
 
 class Filter extends Component {
 
-    // state = {
-    //     value: {
-    //         min: 0,
-    //         max: 100000
-    //     }
-    // }
-
     constructor(props) {
         super(props);
     }

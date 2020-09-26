@@ -1,19 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import history from "../history";
 
 class CartIcon extends Component {
-
-    // constructor(props) {
-    //     super(props)
-    // }
-
-    // handleNavigate = e => {
-    //     e.preventDefault();
-    //     history.push('/cart');
-    // }
-
     render() {
         const { products } = this.props;
         return (
