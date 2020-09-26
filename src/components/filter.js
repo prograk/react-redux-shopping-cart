@@ -19,7 +19,7 @@ class Filter extends Component {
     }
 
     handleChange = value => {
-        if (value.max <= 100000)
+        if (value.min >= 0 && value.max <= 100000)
             this.props.productsRangeListingUpdate(value);
     }
 

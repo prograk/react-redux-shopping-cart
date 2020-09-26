@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { productSortAction, productsRangeListing } from "../action";
+import { productSortAction, productsRangeListing, productsRangeListingUpdate } from "../action";
 import { SORT_DESENDING, SORT_ASENDING, SORT_DISCOUNT } from "../constants";
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
@@ -17,9 +17,9 @@ class SubHeader extends Component {
         super(props);
     }
 
-    handleSliderChange = (value) => {
-        if (value.max <= 100000)
-            this.setState({ value })
+    handleSliderChange = value => {
+        if (value.min >= 0 && value.max <= 100000)
+            this.props.productsRangeListingUpdate(value);
     }
 
     closePopup = () => {
@@ -29,18 +29,18 @@ class SubHeader extends Component {
         })
     }
 
-    submitFilter = event => {
-        event.preventDefault();
-        const { value } = this.state;
-        this.closePopup();
+    submitFilter = e => {
+        e.preventDefault();
+        const { value } = this.props.products;
         this.props.productsRangeListing(value);
+        this.closePopup();
     }
 
-    handleClick = (action) => {
+    handleClick = action => {
         this.props.productSortAction(action);
     }
 
-    handleClickMobile = (value) => {
+    handleClickMobile = value => {
         let { modalFor } = this.state;
         modalFor = value
 
@@ -51,7 +51,7 @@ class SubHeader extends Component {
     }
 
     render() {
-        const { modal, modalFor, value } = this.state;
+        const { modal, modalFor } = this.state;
         const { products } = this.props;
         return (
             <>
@@ -73,7 +73,7 @@ class SubHeader extends Component {
                     </div>
                 </div>
 
-                <div className={`modal fade ${modal ? "show" : ''}`} role="dialog" aria-hidden="true">
+                <div className={`modal d-lg-none fade ${modal ? "show" : ''}`} role="dialog" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -101,7 +101,7 @@ class SubHeader extends Component {
                                                         <InputRange
                                                             minValue={0}
                                                             maxValue={100000}
-                                                            value={value}
+                                                            value={products.value}
                                                             formatLabel={value => `₹${value}`}
                                                             onChange={this.handleSliderChange} />
                                                         <div className="filter_label">Price</div>
@@ -128,7 +128,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ productSortAction, productsRangeListing }, dispatch)
+    return bindActionCreators({ productSortAction, productsRangeListing, productsRangeListingUpdate }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubHeader);
