@@ -1,7 +1,7 @@
 import { LOAD_PRODUCTS, URL_ROOT, SEARCH_PRODUCTS, PRODUCT_ADD, PRODUCT_REMOVE, PRODUCT_DELETE, FILTER_PRICE } from "../constants";
 
 export function getProducts() {
-    const request = fetch(`${URL_ROOT}/items`,
+    const request = fetch(`${URL_ROOT}items`,
         { method: 'GET' })
         .then(response => response.json())
 
@@ -12,7 +12,7 @@ export function getProducts() {
 }
 
 export function searchProducts(keyword) {
-    const request = fetch(`${URL_ROOT}/items?q=${keyword}`,
+    const request = fetch(`${URL_ROOT}items?q=${keyword}`,
         { method: 'GET' })
         .then(response => response.json())
 

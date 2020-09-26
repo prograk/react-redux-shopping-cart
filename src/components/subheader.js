@@ -8,17 +8,18 @@ import "react-input-range/lib/css/index.css";
 
 class SubHeader extends Component {
 
+    state = {
+        activeSort: '',
+        modal: false,
+        modalFor: '',
+        value: {
+            min: 0,
+            max: 100000
+        }
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            activeSort: '',
-            modal: false,
-            modalFor: '',
-            value: {
-                min: 0,
-                max: 100000
-            }
-        }
     }
 
     handleSliderChange = (value) => {
@@ -33,7 +34,7 @@ class SubHeader extends Component {
         })
     }
 
-    submitFilter = () => {
+    submitFilter = (event) => {
         event.preventDefault();
         const { value } = this.state;
         this.closePopup();

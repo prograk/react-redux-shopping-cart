@@ -7,14 +7,15 @@ import "react-input-range/lib/css/index.css";
 
 class Filter extends Component {
 
+    state = {
+        value: {
+            min: 0,
+            max: 100000
+        }
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            value: {
-                min: 0,
-                max: 100000
-            }
-        }
     }
 
     handleChange = (value) => {
@@ -22,7 +23,7 @@ class Filter extends Component {
             this.setState({ value })
     }
 
-    submitFilter = () => {
+    submitFilter = (event) => {
         event.preventDefault();
         const { value } = this.state;
         this.props.productsRangeListing(value);
