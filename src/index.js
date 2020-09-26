@@ -11,12 +11,10 @@ import Footer from "./components/footer";
 import rootReducers from "./reducers";
 import store from "./store";
 import history from './history';
-import Header from "./components/header";
 
 ReactDOM.render(
     <Provider store={store(rootReducers)}>
-        <Header />
-        <Router history={history} basename={process.env.PUBLIC_URL}>
+        <Router history={history}>
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route exact path="/cart" component={Cart} />

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { productAddCart, productRemoveCart, productDeleteCart } from "../action";
+import Header from "./header";
 
 class Cart extends Component {
 
@@ -64,7 +65,7 @@ class Cart extends Component {
         const { products } = this.props;
         return (
             <>
-                {/* <Header /> */}
+                <Header />
                 <div className="container-fluid">
                     <div className="cart_container container_common">
                         <div className="row cart_row">
