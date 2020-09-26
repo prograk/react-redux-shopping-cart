@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Header from "./header";
 import { productAddCart, productRemoveCart, productDeleteCart } from "../action";
 
 class Cart extends Component {

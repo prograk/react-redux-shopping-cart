@@ -6,14 +6,13 @@ import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import './index.scss';
 import App from "./components/app";
+import Cart from "./components/cart";
 import Footer from "./components/footer";
 import rootReducers from "./reducers";
 import store from "./store";
 import Loader from "./components/loader";
 import Header from "./components/header";
 import history from './history';
-
-const Cart = React.lazy(() => import('./components/cart'));
 
 ReactDOM.render(
     <Provider store={store(rootReducers)}>

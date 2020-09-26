@@ -9,13 +9,8 @@ import "react-input-range/lib/css/index.css";
 class SubHeader extends Component {
 
     state = {
-        // activeSort: '',
         modal: false,
-        modalFor: '',
-        value: {
-            min: 0,
-            max: 100000
-        }
+        modalFor: ''
     }
 
     constructor(props) {
@@ -42,10 +37,6 @@ class SubHeader extends Component {
     }
 
     handleClick = (action) => {
-        // this.setState({
-        //     activeSort: action,
-        //     modal: false
-        // })
         this.props.productSortAction(action);
     }
 

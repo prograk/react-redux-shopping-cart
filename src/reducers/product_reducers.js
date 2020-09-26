@@ -1,6 +1,6 @@
 import { LOAD_PRODUCTS, SEARCH_PRODUCTS, PRODUCT_ADD, PRODUCT_REMOVE, PRODUCT_DELETE, FILTER_PRICE, FILTER_PRICE_UPDATE, INITIAL_STATE, SORT_ASENDING, SORT_DESENDING, SORT_DISCOUNT } from "../constants";
 
-export default function (action, state = INITIAL_STATE) {
+export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case LOAD_PRODUCTS: {
             return {
@@ -14,11 +14,9 @@ export default function (action, state = INITIAL_STATE) {
             const sortAsend = state.list.sort((a, b) => parseFloat(a.price.actual) - parseFloat(b.price.actual));
             return { ...state, list: sortAsend, activeSort: SORT_ASENDING }
         }
-        }
         case SORT_DESENDING: {
             const sortDesend = state.list.sort((a, b) => parseFloat(b.price.actual) - parseFloat(a.price.actual));
             return { ...state, list: sortDesend, activeSort: SORT_DESENDING }
-        }
         }
         case SORT_DISCOUNT: {
             const sortDiscount = state.list.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
@@ -26,7 +24,6 @@ export default function (action, state = INITIAL_STATE) {
         }
         case FILTER_PRICE_UPDATE: {
             return { ...state, value: { ...action.payload } }
-        }
         }
         case FILTER_PRICE: {
             if (state.hasOwnProperty('oldList')) {

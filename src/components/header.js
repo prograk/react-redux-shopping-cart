@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Search from "./search";
 import CartIcon from "./carticon";
 import history from "../history";
