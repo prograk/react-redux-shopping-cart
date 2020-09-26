@@ -17,7 +17,7 @@ import history from './history';
 ReactDOM.render(
     <Provider store={store(rootReducers)}>
         <Header />
-        <Router history={history}>
+        <Router history={history} basename={process.env.PUBLIC_URL}>
             <Suspense fallback={<Loader />}>
                 <div>
                     <Route exact path="/" component={App} />
