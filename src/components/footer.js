@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Header from "./header";
 
-class Cart extends Component {
+class Footer extends Component {
     render() {
         return (
             <>
@@ -11,4 +10,4 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+export default Footer;

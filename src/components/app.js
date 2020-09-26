@@ -1,6 +1,5 @@
 
 import React from "react";
-import Header from "./header";
 import SubHeader from "./subheader";
 import ShoppingList from "./shoppinglist";
 import Filter from "./filter";
@@ -8,7 +7,6 @@ import Filter from "./filter";
 const App = () => {
     return (
         <>
-            <Header />
             <div className="container-fluid">
                 <div className="product_container container_common">
                     <div className="row">

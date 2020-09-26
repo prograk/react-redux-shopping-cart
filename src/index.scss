@@ -81,6 +81,7 @@ $black: #000000;
 .input-range__label {
     top: -20px;
     color: $gray;
+    pointer-events: none;
 }
 
 /** RANGE SLIDER OVERRIDE **/

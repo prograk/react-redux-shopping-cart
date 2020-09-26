@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getProducts, productAddCart } from "../action";
+import Loader from "./loader";
 
 class ShoppingList extends Component {
 
     componentDidMount() {
-        this.props.getProducts();
+        if (this.props.products.list.length === 0)
+            this.props.getProducts();
     }
 
     handleClick = (event, id) => {
@@ -53,7 +55,7 @@ class ShoppingList extends Component {
                 <div className="col-12 product">
                     {this.productList(this.props.products)}
                     {this.props.products.dataLoading ?
-                        <div className="spinner mt-5"><div className="bounce1"></div><div className="bounce2"></div><div className="bounce3"></div></div>
+                        <Loader />
                         : ""}
                 </div>
             </div>

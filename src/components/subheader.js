@@ -8,17 +8,18 @@ import "react-input-range/lib/css/index.css";
 
 class SubHeader extends Component {
 
+    state = {
+        // activeSort: '',
+        modal: false,
+        modalFor: '',
+        value: {
+            min: 0,
+            max: 100000
+        }
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            activeSort: '',
-            modal: false,
-            modalFor: '',
-            value: {
-                min: 0,
-                max: 100000
-            }
-        }
     }
 
     handleSliderChange = (value) => {
@@ -33,7 +34,7 @@ class SubHeader extends Component {
         })
     }
 
-    submitFilter = () => {
+    submitFilter = event => {
         event.preventDefault();
         const { value } = this.state;
         this.closePopup();
@@ -41,10 +42,10 @@ class SubHeader extends Component {
     }
 
     handleClick = (action) => {
-        this.setState({
-            activeSort: action,
-            modal: false
-        })
+        // this.setState({
+        //     activeSort: action,
+        //     modal: false
+        // })
         this.props.productSortAction(action);
     }
 
@@ -59,7 +60,8 @@ class SubHeader extends Component {
     }
 
     render() {
-        const { activeSort, modal, modalFor, value } = this.state;
+        const { modal, modalFor, value } = this.state;
+        const { products } = this.props;
         return (
             <>
                 <div className="subHeader">
@@ -73,9 +75,9 @@ class SubHeader extends Component {
                         </div>
                         </div>
                         <ul className="subHeader_list"><span className="subHeader_title">Sort By</span>
-                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
-                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
-                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
+                            <li><div className={`${products.activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
+                            <li><div className={`${products.activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
+                            <li><div className={`${products.activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
                         </ul>
                     </div>
                 </div>
@@ -93,9 +95,9 @@ class SubHeader extends Component {
                                 {modalFor === "Sort Options" ?
                                     <div className="body_sort">
                                         <ul className="body_list">
-                                            <li><div className={`${activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
-                                            <li><div className={`${activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
-                                            <li><div className={`${activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
+                                            <li><div className={`${products.activeSort === "SORT_DESENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DESENDING)}>Price -- High Low</div></li>
+                                            <li><div className={`${products.activeSort === "SORT_ASENDING" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_ASENDING)}>Price -- Low High</div></li>
+                                            <li><div className={`${products.activeSort === "SORT_DISCOUNT" ? 'active' : ''}`} onClick={() => this.handleClick(SORT_DISCOUNT)}>Discount</div></li>
                                         </ul>
                                     </div>
                                     :
@@ -128,8 +130,14 @@ class SubHeader extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        products: state.products
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ productSortAction, productsRangeListing }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(SubHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(SubHeader);

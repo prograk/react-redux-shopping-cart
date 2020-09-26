@@ -1,4 +1,4 @@
-import { LOAD_PRODUCTS, URL_ROOT, SEARCH_PRODUCTS, PRODUCT_ADD, PRODUCT_REMOVE, PRODUCT_DELETE, FILTER_PRICE } from "../constants";
+import { LOAD_PRODUCTS, URL_ROOT, SEARCH_PRODUCTS, PRODUCT_ADD, PRODUCT_REMOVE, PRODUCT_DELETE, FILTER_PRICE, FILTER_PRICE_UPDATE } from "../constants";
 
 export function getProducts() {
     const request = fetch(`${URL_ROOT}/items`,
@@ -46,6 +46,13 @@ export function productDeleteCart(id) {
 export function productSortAction(action) {
     return {
         type: action
+    }
+}
+
+export function productsRangeListingUpdate(value) {
+    return {
+        type: FILTER_PRICE_UPDATE,
+        payload: value
     }
 }
 

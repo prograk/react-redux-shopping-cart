@@ -1,35 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, } from "redux";
-import { productsRangeListing } from "../action";
+import { productsRangeListing, productsRangeListingUpdate } from "../action";
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
 
 class Filter extends Component {
 
+    // state = {
+    //     value: {
+    //         min: 0,
+    //         max: 100000
+    //     }
+    // }
+
     constructor(props) {
         super(props);
-        this.state = {
-            value: {
-                min: 0,
-                max: 100000
-            }
-        }
     }
 
-    handleChange = (value) => {
+    handleChange = value => {
         if (value.max <= 100000)
-            this.setState({ value })
+            this.props.productsRangeListingUpdate(value);
     }
 
-    submitFilter = () => {
+    submitFilter = event => {
         event.preventDefault();
-        const { value } = this.state;
+        const { value } = this.props.products;
         this.props.productsRangeListing(value);
     }
 
     render() {
-        const { value } = this.state;
+        // const { value } = this.state;
+        const { products } = this.props;
         return (
             <div className="filter">
                 <div className="filter_title">Filters</div>
@@ -39,7 +41,7 @@ class Filter extends Component {
                             <InputRange
                                 minValue={0}
                                 maxValue={100000}
-                                value={value}
+                                value={products.value}
                                 formatLabel={value => `₹${value}`}
                                 onChange={this.handleChange} />
                             <div className="filter_label">Price</div>
@@ -59,7 +61,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ productsRangeListing }, dispatch)
+    return bindActionCreators({ productsRangeListing, productsRangeListingUpdate }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

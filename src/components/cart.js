@@ -61,14 +61,15 @@ class Cart extends Component {
     }
 
     render() {
+        const { products } = this.props;
         return (
             <>
-                <Header />
+                {/* <Header /> */}
                 <div className="container-fluid">
                     <div className="cart_container container_common">
                         <div className="row cart_row">
                             <div className="col-9">
-                                {this.handleCart(this.props.products)}
+                                {this.handleCart(products)}
                             </div>
                             <div className="col-3">
                                 <div className="card cart_box">
@@ -77,18 +78,18 @@ class Cart extends Component {
                                 </div>
                                     <div className="card-body cart_pricing">
                                         <div className="cart_data">
-                                            <span className="cart_label">Price ({this.props.products.totalProducts} item)</span>
-                                            <span><i className="fa fa-inr"></i>{this.props.products.totalDisplay}</span>
+                                            <span className="cart_label">Price ({products.totalProducts} item)</span>
+                                            <span><i className="fa fa-inr"></i>{products.totalDisplay}</span>
                                         </div>
                                         <div className="cart_data">
                                             <span className="cart_label">Discount</span>
-                                            <span><i className="fa fa-inr"></i>{this.props.products.totalDiscount}</span>
+                                            <span><i className="fa fa-inr"></i>{products.totalDiscount}</span>
                                         </div>
                                     </div>
                                     <div className="card-footer">
                                         <div className="cart_data">
                                             <span className="cart_label">Total Payable</span>
-                                            <span><i className="fa fa-inr"></i>{this.props.products.total}</span>
+                                            <span><i className="fa fa-inr"></i>{products.total}</span>
                                         </div>
                                     </div>
                                 </div>

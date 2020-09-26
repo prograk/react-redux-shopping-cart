@@ -4,12 +4,14 @@ import { searchProducts } from "../action";
 import { bindActionCreators } from "redux";
 
 class Search extends Component {
+
+    state = {
+        keyword: "",
+        inputVisible: false,
+    };
+
     constructor(props) {
         super(props);
-        this.state = {
-            keyword: "",
-            inputVisible: false,
-        };
     }
 
     handleClick = event => {
@@ -18,8 +20,11 @@ class Search extends Component {
     }
 
     handleChange = event => {
+
+        const { name, value } = event.target;
+
         this.setState({
-            [event.target.name]: event.target.value
+            [name]: value
         }, () => {
             this.props.searchProducts(this.state.keyword);
         });
