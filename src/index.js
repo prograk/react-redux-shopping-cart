@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import 'bootstrap/scss/bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
@@ -15,8 +15,7 @@ import history from './history';
 
 ReactDOM.render(
     <Provider store={store(rootReducers)}>
-        <Header />
-        <Router history={history} basename={process.env.PUBLIC_URL}>
+        <Router history={history}>
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route exact path="/cart" component={Cart} />
