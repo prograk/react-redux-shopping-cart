@@ -1,5 +1,5 @@
-export const URL_ROOT = "https://my-json-server.typicode.com/prograk/demo";
-export const INITIAL_STATE = { list: [], addedItems: [], dataLoading: true, total: 0, totalDisplay: 0, totalProducts: 0, totalDiscount: 0, activeSort: "", value: { min: 0, max: 100000 } }
+export const URL_ROOT = "https://my-json-server.typicode.com/prograk/demo/";
+export const INITIAL_STATE = { list: [], addedItems: [], dataLoading: true, total: 0, totalDisplay: 0, totalProducts: 0, totalDiscount: 0, activeSort: "", value: { min: 0, max: 100000 } };
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 export const SEARCH_PRODUCTS = "SEARCH_PRODUCTS";
 export const PRODUCT_ADD = "PRODUCT_ADD";

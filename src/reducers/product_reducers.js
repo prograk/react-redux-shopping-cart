@@ -1,6 +1,6 @@
 import { LOAD_PRODUCTS, SEARCH_PRODUCTS, PRODUCT_ADD, PRODUCT_REMOVE, PRODUCT_DELETE, FILTER_PRICE, FILTER_PRICE_UPDATE, INITIAL_STATE, SORT_ASENDING, SORT_DESENDING, SORT_DISCOUNT } from "../constants";
 
-export default function (state = INITIAL_STATE, action) {
+export default function (action, state = INITIAL_STATE) {
     switch (action.type) {
         case LOAD_PRODUCTS: {
             return {
@@ -14,9 +14,11 @@ export default function (state = INITIAL_STATE, action) {
             const sortAsend = state.list.sort((a, b) => parseFloat(a.price.actual) - parseFloat(b.price.actual));
             return { ...state, list: sortAsend, activeSort: SORT_ASENDING }
         }
+        }
         case SORT_DESENDING: {
             const sortDesend = state.list.sort((a, b) => parseFloat(b.price.actual) - parseFloat(a.price.actual));
             return { ...state, list: sortDesend, activeSort: SORT_DESENDING }
+        }
         }
         case SORT_DISCOUNT: {
             const sortDiscount = state.list.sort((a, b) => parseFloat(b.discount) - parseFloat(a.discount));
@@ -24,6 +26,7 @@ export default function (state = INITIAL_STATE, action) {
         }
         case FILTER_PRICE_UPDATE: {
             return { ...state, value: { ...action.payload } }
+        }
         }
         case FILTER_PRICE: {
             if (state.hasOwnProperty('oldList')) {
@@ -61,8 +64,8 @@ export default function (state = INITIAL_STATE, action) {
         }
         case PRODUCT_REMOVE: {
             let removedItem = state.list.find(item => item.id === action.payload);
-            let item_exist = state.addedItems.find(item => action.payload === item.id);
-            if (item_exist) {
+            let existed_item = state.addedItems.find(item => action.payload === item.id);
+            if (existed_item) {
                 removedItem['quantity'] -= 1;
                 state.totalProducts -= 1;
                 let newState = {

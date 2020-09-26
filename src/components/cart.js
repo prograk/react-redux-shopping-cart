@@ -20,8 +20,8 @@ class Cart extends Component {
 
     handleCart = (data) => {
         if (data.addedItems.length > 0) {
-            return data.addedItems.map((product, i) => {
-                return (<div className="card mb-3" key={i}>
+            return data.addedItems.map((product, i) => (
+                <div className="card mb-3" key={i}>
                     <div className="card-body card_product">
                         <div className="card_product_common d-flex">
                             <div className="card_product_image">
@@ -49,14 +49,15 @@ class Cart extends Component {
                             <span onClick={() => this.handleRemove(product.id)}>REMOVE</span>
                         </div>
                     </div>
-                </div>)
-            })
+                </div>
+            ))
         } else {
-            return <div className="card mb-3" key="1">
+            return (<div className="card mb-3" key="1">
                 <div className="card-body">
                     No Products Added
                 </div>
             </div>
+            )
         }
     }
 

@@ -26,7 +26,8 @@ class Search extends Component {
         this.setState({
             [name]: value
         }, () => {
-            this.props.searchProducts(this.state.keyword);
+            const { keyword } = this.state;
+            this.props.searchProducts(keyword);
         });
     };
 
