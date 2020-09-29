@@ -28,7 +28,7 @@ npm install
 npm run start
 ```
 
-[demo](https://prograk.github.io/)
+[demo](https://prograk.github.io/react-redux-shopping-cart)
 
 ## License
 
